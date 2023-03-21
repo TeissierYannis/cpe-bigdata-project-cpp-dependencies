@@ -3,7 +3,7 @@ project(exifextract)
 
 set(CMAKE_CXX_STANDARD 17)
 #find_library(LIBEXIF_LIBRARY exif)
-find_package(CURL REQUIRED)
+#find_package(CURL REQUIRED)
 
 # Add the executable and link against libexif
 add_executable(exifextract main.cpp include/easyexif/exif.cpp)
