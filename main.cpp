@@ -30,10 +30,53 @@ int main(int argc, char **argv) {
 
     ofstream fout(output_file);
 
-    fout
-            << "filename,Make,Model,Software,BitsPerSample,ImageWidth,ImageHeight,ImageDescription,Orientation,Copyright,DateTime,DateTimeOriginal,DateTimeDigitized,SubSecTimeOriginal,ExposureTime,FNumber,ExposureProgram,ISOSpeedRatings,SubjectDistance,ExposureBiasValue,Flash,FlashReturnedLight,FlashMode,MeteringMode,FocalLength,FocalLengthIn35mm,Latitude,LatitudeDegrees,LatitudeMinutes,LatitudeSeconds,LatitudeDirection,Longitude,LongitudeDegrees,LongitudeMinutes,LongitudeSeconds,LongitudeDirection,Altitude,DOP,FocalLengthMin,FocalLengthMax,FStopMin,FStopMax,LensMake,LensModel,FocalPlaneXResolution,FocalPlaneYResolution"
-            << endl;
-
+    fout << "filename,"
+            "Make,"
+            "Model,"
+            "Software,"
+            "BitsPerSample,"
+            "ImageWidth,"
+            "ImageHeight,"
+            "ImageDescription,"
+            "Orientation,"
+            "Copyright,"
+            "DateTime,"
+            "DateTimeOriginal,"
+            "DateTimeDigitized,"
+            "SubSecTimeOriginal,"
+            "ExposureTime,"
+            "FNumber,"
+            "ExposureProgram,"
+            "ISOSpeedRatings,"
+            "SubjectDistance,"
+            "ExposureBiasValue,"
+            "Flash,"
+            "FlashReturnedLight,"
+            "FlashMode,"
+            "MeteringMode,"
+            "FocalLength,"
+            "FocalLengthIn35mm,"
+            "Latitude,"
+            "LatitudeDegrees,"
+            "LatitudeMinutes,"
+            "LatitudeSeconds,"
+            "LatitudeDirection,"
+            "Longitude,"
+            "LongitudeDegrees,"
+            "LongitudeMinutes,"
+            "LongitudeSeconds,"
+            "LongitudeDirection,"
+            "Altitude,"
+            "DOP,"
+            "FocalLengthMin,"
+            "FocalLengthMax,"
+            "FStopMin,"
+            "FStopMax,"
+            "LensMake,"
+            "LensModel,"
+            "FocalPlaneXResolution,"
+            "FocalPlaneYResolution"
+         << endl;
     // loop through all files in the folder
     while ((ent = readdir(dir)) != NULL) {
 
@@ -83,52 +126,107 @@ int main(int argc, char **argv) {
                         result.ImageWidth = width;
                     }
 
-                    fout << filename << ",";
-                    fout << result.Make.c_str() << ",";
-                    fout << result.Model.c_str() << ",";
-                    fout << result.Software.c_str() << ",";
-                    fout << result.BitsPerSample << ",";
-                    fout << result.ImageWidth << ",";
-                    fout << result.ImageHeight << ",";
-                    fout << result.ImageDescription.c_str() << ",";
-                    fout << result.Orientation << ",";
-                    fout << result.Copyright.c_str() << ",";
-                    fout << result.DateTime.c_str() << ",";
-                    fout << result.DateTimeOriginal.c_str() << ",";
-                    fout << result.DateTimeDigitized.c_str() << ",";
-                    fout << result.SubSecTimeOriginal.c_str() << ",";
-                    fout << result.ExposureTime << ",";
-                    fout << result.FNumber << ",";
-                    fout << result.ExposureProgram << ",";
-                    fout << result.ISOSpeedRatings << ",";
-                    fout << result.SubjectDistance << ",";
-                    fout << result.ExposureBiasValue << ",";
-                    fout << result.Flash << ",";
-                    fout << result.FlashReturnedLight << ",";
-                    fout << result.FlashMode << ",";
-                    fout << result.MeteringMode << ",";
-                    fout << result.FocalLength << ",";
-                    fout << result.FocalLengthIn35mm << ",";
-                    fout << result.GeoLocation.Latitude << ",";
-                    fout << result.GeoLocation.LatComponents.degrees << ",";
-                    fout << result.GeoLocation.LatComponents.minutes << ",";
-                    fout << result.GeoLocation.LatComponents.seconds << ",";
-                    fout << result.GeoLocation.LatComponents.direction << ",";
-                    fout << result.GeoLocation.Longitude << ",";
-                    fout << result.GeoLocation.LonComponents.degrees << ",";
-                    fout << result.GeoLocation.LonComponents.minutes << ",";
-                    fout << result.GeoLocation.LonComponents.seconds << ",";
-                    fout << result.GeoLocation.LonComponents.direction << ",";
-                    fout << result.GeoLocation.Altitude << ",";
-                    fout << result.GeoLocation.DOP << ",";
-                    fout << result.LensInfo.FocalLengthMin << ",";
-                    fout << result.LensInfo.FocalLengthMax << ",";
-                    fout << result.LensInfo.FStopMin << ",";
-                    fout << result.LensInfo.FStopMax << ",";
-                    fout << result.LensInfo.Make.c_str() << ",";
-                    fout << result.LensInfo.Model.c_str() << ",";
-                    fout << result.LensInfo.FocalPlaneXResolution << ",";
-                    fout << result.LensInfo.FocalPlaneYResolution << endl;
+                    string output_string = "";
+                    output_string += string(filename) + ",";
+                    output_string += result.Make + ",";
+                    output_string += result.Model + ",";
+                    output_string += result.Software + ",";
+                    output_string += to_string(result.BitsPerSample) + ",";
+                    output_string += to_string(result.ImageWidth) + ",";
+                    output_string += to_string(result.ImageHeight) + ",";
+                    output_string += result.ImageDescription + ",";
+                    output_string += to_string(result.Orientation) + ",";
+                    output_string += result.Copyright + ",";
+                    output_string += result.DateTime + ",";
+                    output_string += result.DateTimeOriginal + ",";
+                    output_string += result.DateTimeDigitized + ",";
+                    output_string += result.SubSecTimeOriginal + ",";
+                    output_string += to_string(result.ExposureTime) + ",";
+                    output_string += to_string(result.FNumber) + ",";
+                    output_string += to_string(result.ExposureProgram) + ",";
+                    output_string += to_string(result.ISOSpeedRatings) + ",";
+                    output_string += to_string(result.SubjectDistance) + ",";
+                    output_string += to_string(result.ExposureBiasValue) + ",";
+                    output_string += to_string(result.Flash) + ",";
+                    output_string += to_string(result.FlashReturnedLight) + ",";
+                    output_string += to_string(result.FlashMode) + ",";
+                    output_string += to_string(result.MeteringMode) + ",";
+                    output_string += to_string(result.FocalLength) + ",";
+                    output_string += to_string(result.FocalLengthIn35mm) + ",";
+                    output_string += to_string(result.GeoLocation.Latitude) + ",";
+                    output_string += to_string(result.GeoLocation.LatComponents.degrees) + ",";
+                    output_string += to_string(result.GeoLocation.LatComponents.minutes) + ",";
+                    output_string += to_string(result.GeoLocation.LatComponents.seconds) + ",";
+                    output_string += to_string(result.GeoLocation.LatComponents.direction) + ",";
+                    output_string += to_string(result.GeoLocation.Longitude) + ",";
+                    output_string += to_string(result.GeoLocation.LonComponents.degrees) + ",";
+                    output_string += to_string(result.GeoLocation.LonComponents.minutes) + ",";
+                    output_string += to_string(result.GeoLocation.LonComponents.seconds) + ",";
+                    output_string += to_string(result.GeoLocation.LonComponents.direction) + ",";
+                    output_string += to_string(result.GeoLocation.Altitude) + ",";
+                    output_string += to_string(result.GeoLocation.DOP) + ",";
+                    output_string += to_string(result.LensInfo.FocalLengthMin) + ",";
+                    output_string += to_string(result.LensInfo.FocalLengthMax) + ",";
+                    output_string += to_string(result.LensInfo.FStopMin) + ",";
+                    output_string += to_string(result.LensInfo.FStopMax) + ",";
+                    output_string += result.LensInfo.Make + ",";
+                    output_string += result.LensInfo.Model + ",";
+                    output_string += to_string(result.LensInfo.FocalPlaneXResolution) + ",";
+                    output_string += to_string(result.LensInfo.FocalPlaneYResolution);
+
+                    // clean up the output string, remove all invalid characters
+                    output_string.erase(remove_if(output_string.begin(), output_string.end(), [](char c) {
+                        return !isprint(c);
+                    }), output_string.end());
+
+                    fout << output_string << endl;
+
+                  //  fout << filename << ",";
+                  //  fout << result.Make.c_str() << ",";
+                  //  fout << result.Model.c_str() << ",";
+                  //  fout << result.Software.c_str() << ",";
+                  //  fout << result.BitsPerSample << ",";
+                  //  fout << result.ImageWidth << ",";
+                  //  fout << result.ImageHeight << ",";
+                  //  fout << result.ImageDescription.c_str() << ",";
+                  //  fout << result.Orientation << ",";
+                  //  fout << result.Copyright.c_str() << ",";
+                  //  fout << result.DateTime.c_str() << ",";
+                  //  fout << result.DateTimeOriginal.c_str() << ",";
+                  //  fout << result.DateTimeDigitized.c_str() << ",";
+                  //  fout << result.SubSecTimeOriginal.c_str() << ",";
+                  //  fout << result.ExposureTime << ",";
+                  //  fout << result.FNumber << ",";
+                  //  fout << result.ExposureProgram << ",";
+                  //  fout << result.ISOSpeedRatings << ",";
+                  //  fout << result.SubjectDistance << ",";
+                  //  fout << result.ExposureBiasValue << ",";
+                  //  fout << result.Flash << ",";
+                  //  fout << result.FlashReturnedLight << ",";
+                  //  fout << result.FlashMode << ",";
+                  //  fout << result.MeteringMode << ",";
+                  //  fout << result.FocalLength << ",";
+                  //  fout << result.FocalLengthIn35mm << ",";
+                  //  fout << result.GeoLocation.Latitude << ",";
+                  //  fout << result.GeoLocation.LatComponents.degrees << ",";
+                  //  fout << result.GeoLocation.LatComponents.minutes << ",";
+                  //  fout << result.GeoLocation.LatComponents.seconds << ",";
+                  //  fout << result.GeoLocation.LatComponents.direction << ",";
+                  //  fout << result.GeoLocation.Longitude << ",";
+                  //  fout << result.GeoLocation.LonComponents.degrees << ",";
+                  //  fout << result.GeoLocation.LonComponents.minutes << ",";
+                  //  fout << result.GeoLocation.LonComponents.seconds << ",";
+                  //  fout << result.GeoLocation.LonComponents.direction << ",";
+                  //  fout << result.GeoLocation.Altitude << ",";
+                  //  fout << result.GeoLocation.DOP << ",";
+                  //  fout << result.LensInfo.FocalLengthMin << ",";
+                  //  fout << result.LensInfo.FocalLengthMax << ",";
+                  //  fout << result.LensInfo.FStopMin << ",";
+                  //  fout << result.LensInfo.FStopMax << ",";
+                  //  fout << result.LensInfo.Make.c_str() << ",";
+                  //  fout << result.LensInfo.Model.c_str() << ",";
+                  //  fout << result.LensInfo.FocalPlaneXResolution << ",";
+                  //  fout << result.LensInfo.FocalPlaneYResolution << endl;
 
                 } catch (exception &e) {
                     cerr << "Error: " << e.what() << endl;
