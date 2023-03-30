@@ -174,59 +174,7 @@ int main(int argc, char **argv) {
                     output_string += to_string(result.LensInfo.FocalPlaneXResolution) + ",";
                     output_string += to_string(result.LensInfo.FocalPlaneYResolution);
 
-                    // clean up the output string, remove all invalid characters
-                    output_string.erase(remove_if(output_string.begin(), output_string.end(), [](char c) {
-                        return !isprint(c);
-                    }), output_string.end());
-
                     fout << output_string << endl;
-
-                  //  fout << filename << ",";
-                  //  fout << result.Make.c_str() << ",";
-                  //  fout << result.Model.c_str() << ",";
-                  //  fout << result.Software.c_str() << ",";
-                  //  fout << result.BitsPerSample << ",";
-                  //  fout << result.ImageWidth << ",";
-                  //  fout << result.ImageHeight << ",";
-                  //  fout << result.ImageDescription.c_str() << ",";
-                  //  fout << result.Orientation << ",";
-                  //  fout << result.Copyright.c_str() << ",";
-                  //  fout << result.DateTime.c_str() << ",";
-                  //  fout << result.DateTimeOriginal.c_str() << ",";
-                  //  fout << result.DateTimeDigitized.c_str() << ",";
-                  //  fout << result.SubSecTimeOriginal.c_str() << ",";
-                  //  fout << result.ExposureTime << ",";
-                  //  fout << result.FNumber << ",";
-                  //  fout << result.ExposureProgram << ",";
-                  //  fout << result.ISOSpeedRatings << ",";
-                  //  fout << result.SubjectDistance << ",";
-                  //  fout << result.ExposureBiasValue << ",";
-                  //  fout << result.Flash << ",";
-                  //  fout << result.FlashReturnedLight << ",";
-                  //  fout << result.FlashMode << ",";
-                  //  fout << result.MeteringMode << ",";
-                  //  fout << result.FocalLength << ",";
-                  //  fout << result.FocalLengthIn35mm << ",";
-                  //  fout << result.GeoLocation.Latitude << ",";
-                  //  fout << result.GeoLocation.LatComponents.degrees << ",";
-                  //  fout << result.GeoLocation.LatComponents.minutes << ",";
-                  //  fout << result.GeoLocation.LatComponents.seconds << ",";
-                  //  fout << result.GeoLocation.LatComponents.direction << ",";
-                  //  fout << result.GeoLocation.Longitude << ",";
-                  //  fout << result.GeoLocation.LonComponents.degrees << ",";
-                  //  fout << result.GeoLocation.LonComponents.minutes << ",";
-                  //  fout << result.GeoLocation.LonComponents.seconds << ",";
-                  //  fout << result.GeoLocation.LonComponents.direction << ",";
-                  //  fout << result.GeoLocation.Altitude << ",";
-                  //  fout << result.GeoLocation.DOP << ",";
-                  //  fout << result.LensInfo.FocalLengthMin << ",";
-                  //  fout << result.LensInfo.FocalLengthMax << ",";
-                  //  fout << result.LensInfo.FStopMin << ",";
-                  //  fout << result.LensInfo.FStopMax << ",";
-                  //  fout << result.LensInfo.Make.c_str() << ",";
-                  //  fout << result.LensInfo.Model.c_str() << ",";
-                  //  fout << result.LensInfo.FocalPlaneXResolution << ",";
-                  //  fout << result.LensInfo.FocalPlaneYResolution << endl;
 
                 } catch (exception &e) {
                     cerr << "Error: " << e.what() << endl;
