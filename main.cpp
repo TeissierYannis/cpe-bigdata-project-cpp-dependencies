@@ -177,7 +177,10 @@ int main(int argc, char **argv) {
                     fout << output_string << endl;
 
                 } catch (exception &e) {
+                    // Continue if there is an error
                     cerr << "Error: " << e.what() << endl;
+                    // skip this file
+                    continue;
                 }
 
                 fout.flush();
